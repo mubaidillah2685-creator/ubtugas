@@ -101,13 +101,13 @@
         var kategori = "";
 
         if (bmi < 18.5) {
-            kategori = "Underweight";
+            kategori = "berat badan kurang";
         } else if (bmi < 25) {
             kategori = "Normal";
         } else if (bmi < 30) {
-            kategori = "Overweight";
+            kategori = "kelebihan berat badan";
         } else {
-            kategori = "Obesity";
+            kategori = "kegemukan";
         }
 
         areaHasil.innerText = "BMI: " + bmi + " (" + kategori + ")";
@@ -118,4 +118,5 @@
 </script>
 
 </body>
+
 </html>
