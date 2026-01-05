@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body {
+        background: #e6e6e6;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        padding-top: 40px;
+    }
+
+    .kotak {
+        width: 320px;
+        background: rgb(12, 12, 12);
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+    }
+
+    h2 {
+        text-align: center;
+        color: rgb(248, 11, 46);
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-size: 15px;
+        color: #fefbfb;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin: 8px 0 18px 0;
+        border: 1px solid gray;
+        border-radius: 6px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background: blue;
+        color: white;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: rgb(247, 243, 243);
+    }
+
+    .hasil {
+        margin-top: 20px;
+        padding: 12px;
+        background: #f2f2f2;
+        border-radius: 6px;
+        text-align: center;
+        font-weight: bold;
+        color: #333;
+        min-height: 40px;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="kotak">
+    <h2>Kalkulator BMI</h2>
+
+    <label>Berat Badan (kg)</label>
+    <input type="text" id="nilaiBerat">
+
+    <label>Tinggi Badan (cm)</label>
+    <input type="text" id="nilaiTinggi">
+
+    <button onclick="hitungBMI_12345678()">Hitung BMI</button>
+
+    <div class="hasil" id="tampilHasil"></div>
+</div>
+
+<script>
+    function hitungBMI_12345678() {
+        var berat = document.getElementById("nilaiBerat").value;
+        var tinggi = document.getElementById("nilaiTinggi").value;
+        var areaHasil = document.getElementById("tampilHasil");
+
+        if (berat === "" || tinggi === "" || isNaN(berat) || isNaN(tinggi)) {
+            areaHasil.innerText = "Input harus angka dan tidak boleh kosong";
+            return;
+        }
+
+        var tinggiMeter = tinggi / 100;
+        var bmi = (berat / (tinggiMeter * tinggiMeter)).toFixed(2);
+
+        var kategori = "";
+
+        if (bmi < 18.5) {
+            kategori = "Underweight";
+        } else if (bmi < 25) {
+            kategori = "Normal";
+        } else if (bmi < 30) {
+            kategori = "Overweight";
+        } else {
+            kategori = "Obesity";
+        }
+
+        areaHasil.innerText = "BMI: " + bmi + " (" + kategori + ")";
+        
+        document.getElementById("nilaiBerat").value = "";
+        document.getElementById("nilaiTinggi").value = "";
+    }
+</script>
+
+</body>
+</html>
